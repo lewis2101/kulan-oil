@@ -1,17 +1,17 @@
 <template>
-  <div :class="$style.footer">
-    <div :class="$style.result">
+  <div :class="[$style.footer, { [$style.end]: !hasResult }]">
+    <div v-if="hasResult" :class="$style.result">
       <div :class="$style.item">
         <img src="@/assets/icons/distance-icon.svg" alt="">
-        <span :class="$style['result-header']">Расстояние: <span>1217 км</span></span>
+        <span :class="$style['result-header']">Расстояние: <span>{{ result.distance }} км</span></span>
       </div>
       <div :class="$style.item">
         <img src="@/assets/icons/clock-icon.svg" alt="">
-        <span :class="$style['result-header']">Время: <span>12 ч 1 мин</span></span>
+        <span :class="$style['result-header']">Время: <span>{{ formatTime(result.time) }}</span></span>
       </div>
       <div :class="$style.item">
         <img src="@/assets/icons/tenge-icon.svg" alt="">
-        <span :class="$style['result-header']">Стоимость: <span>5 790 ₸</span></span>
+        <span :class="$style['result-header']">Стоимость: <span>{{ formatSum(result.price.toString()) }} ₸</span></span>
       </div>
     </div>
     <div>
@@ -22,14 +22,31 @@
 
 <script setup lang="ts">
 import BaseButton from "@/components/ui/BaseButton.vue";
+import {computed} from "vue";
+import {formatSum, formatTime} from "../helpers/format";
 
-const emit = defineEmits(['clear'])
+const props = defineProps<{
+  result: Record<string, number | null>,
+}>()
+
+const hasResult = computed(() => props.result.distance && props.result.time && props.result.price)
+
+const emit = defineEmits(['update:modelValue', 'clear'])
+
+const model = computed({
+  get: () => props.modelValue,
+  set: e => emit('update:modelValue', e)
+})
 
 </script>
 
 <style lang="scss" module>
 @use '@/style/colors' as *;
 @use '@/style/mixin/breakpoints' as *;
+
+.end {
+  align-self: end;
+}
 
 .footer {
   display: flex;

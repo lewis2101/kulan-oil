@@ -11,16 +11,16 @@
         {{ item.label }}
       </div>
     </div>
-    <exline-form-component v-model="inputs" @calculate="calculate" @clear="clearData"/>
+    <exline-form-component v-model="inputs" :result="result" @calculate="calculate" @clear="clearData"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import ExlineFormComponent from "@/components/Exline-form-component.vue";
 import {FormInput} from "@/types/input-type";
 import {getCities} from "@/api/getCities";
-import {postDistance} from "@/api/calculateDistance";
+import {calculateDistance} from "@/api/calculateDistance";
 
 const model = ref([
   {
@@ -55,18 +55,34 @@ const inputs = ref<FormInput[]>([
   }
 ])
 
+const result = reactive<Record<string, number | null>>({
+  distance: null,
+  time: null,
+  price: null
+})
+
 const select = (id: number) => {
   model.value = model.value.map(i => i.id === id ? { ...i, active: true } : { ...i, active: false})
 }
 
 const calculate = async () => {
-  const from = inputs.value[0].cities.find(i => i.selected).id
-  const to = inputs.value[1].cities.find(i => i.selected).id
-  const data = await postDistance(from, to)
-  console.log(data)
+  const from = inputs.value[0].cities.find(i => i.selected)?.id
+  const to = inputs.value[1].cities.find(i => i.selected)?.id
+  if(!from && !to) return
+
+  if(from !== to) {
+    const data = await calculateDistance(from, to)
+    return Object.keys(data).forEach(i => {
+      result[i] = data[i]
+    })
+  }
+  return clearData()
 }
 
 const clearData = async () => {
+  Object.keys(result).forEach(i => {
+    result[i] = null
+  })
   await fetchData()
   inputs.value = inputs.value.map(i => ({ ...i, value: '' }))
 }

@@ -16,7 +16,7 @@
         <base-button variant="primary" max-width="275px" @click="$emit('calculate')">Рассчитать стоимость</base-button>
       </div>
     </div>
-    <exline-form-footer @clear="$emit('clear')"/>
+    <exline-form-footer :result="result" @clear="$emit('clear')"/>
   </div>
 </template>
 
@@ -28,7 +28,8 @@ import {computed} from "vue";
 import ExlineFormFooter from "@/components/Exline-form-footer.vue";
 
 const props = defineProps<{
-  modelValue: FormInput[]
+  modelValue: FormInput[],
+  result: Record<string, number | null>
 }>()
 
 const emit = defineEmits(['update:modelValue', 'calculate', 'clear'])
