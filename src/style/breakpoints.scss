@@ -1,0 +1,9 @@
+$breakpoints-sm: 720px !default;
+$breakpoints-md: 1024px !default;
+$breakpoints-lg: 1360px !default;
+
+$breakpoints: (
+        'sm': $breakpoints-sm,
+        'md': $breakpoints-md,
+        'lg': $breakpoints-lg
+)
