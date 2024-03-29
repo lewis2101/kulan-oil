@@ -49,6 +49,10 @@
   }
 }
 
+.logo {
+  justify-self: start;
+}
+
 .menu {
   font-family: Mulish;
   font-size: 14px;
@@ -63,6 +67,10 @@
 
   a:hover {
     opacity: .7;
+  }
+
+  @include breakpoint_up(md) {
+    display: none;
   }
 
 }

@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.container">
     <base-carousel>
-      <slide v-for="slide in 10" :key="slide">
+      <slide v-for="slide in 5" :key="slide">
         <div :class="$style.content">
           <div :class="$style['content-text']">
               <div :class="$style['content-text-title']">Внутригородская доставка</div>
@@ -14,9 +14,7 @@
         </div>
       </slide>
     </base-carousel>
-<!--    <div :class="$style.ellipse">-->
-
-<!--    </div>-->
+<!--    <div :class="$style.ellipse"></div>-->
   </div>
 </template>
 
@@ -34,9 +32,12 @@ import BaseButton from "@/components/ui/BaseButton.vue";
 
 .container {
   background: $color-gray;
-  height: 480px;
+  height: 100%;
   width: 100%;
   position: relative;
+  @include breakpoint_up(md) {
+    padding-bottom: 20px;
+  }
 }
 
 .img {
@@ -59,9 +60,11 @@ import BaseButton from "@/components/ui/BaseButton.vue";
     gap: 1rem;
     max-width: 415px;
 
-    //@include breakpoint_up(lg) {
-    //  max-width: 350px;
-    //}
+    @include breakpoint_up(sm) {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
 
     &-title {
       font-family: Mulish;
@@ -70,6 +73,7 @@ import BaseButton from "@/components/ui/BaseButton.vue";
       line-height: 28px;
       text-align: left;
     }
+
     &-desc {
       font-family: Mulish;
       font-size: 14px;
@@ -77,6 +81,17 @@ import BaseButton from "@/components/ui/BaseButton.vue";
       line-height: 18px;
       text-align: left;
     }
+  }
+
+  @include breakpoint_up(lg) {
+    padding: 0 80px 0 80px;
+  }
+  @include breakpoint_up(md) {
+    padding: 0 40px 0 40px;
+  }
+
+  @include breakpoint_up(sm) {
+    flex-direction: column-reverse;
   }
 }
 
@@ -88,6 +103,6 @@ import BaseButton from "@/components/ui/BaseButton.vue";
   height: 733px;
   right: -100px;
   top: -127px;
-  z-index: 2;
+  z-index: 1;
 }
 </style>

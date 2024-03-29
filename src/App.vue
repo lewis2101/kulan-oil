@@ -1,14 +1,14 @@
 <template>
-  <div :class="$style.wrapper" id="main">
+<!--  <div :class="$style.wrapper" id="main">-->
     <exline-header/>
     <exline-banner/>
     <exline-form/>
     <exline-advantages/>
     <exline-history/>
     <exline-trusts/>
-    <exline-map/>
+<!--    <exline-map/>-->
     <exline-footer/>
-  </div>
+<!--  </div>-->
 </template>
 
 <script setup lang="ts">

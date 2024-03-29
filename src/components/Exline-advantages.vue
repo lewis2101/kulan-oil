@@ -45,6 +45,8 @@ import BaseTitle from "@/components/ui/BaseTitle.vue";
 .list {
   display: flex;
   gap: 24px;
+  justify-content: center;
+
 
   &-item {
     width: 100%;
@@ -61,6 +63,10 @@ import BaseTitle from "@/components/ui/BaseTitle.vue";
     &:hover {
       opacity: .8;
     }
+  }
+
+  @include breakpoint_up(md) {
+    flex-wrap: wrap;
   }
 }
 

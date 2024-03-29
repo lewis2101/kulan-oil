@@ -81,12 +81,12 @@ const model = computed({
   width: 100%;
   height: 100%;
 
-  //@include breakpoint_up(md) {
-  //  margin-top: 1rem;
-  //  flex-direction: column;
-  //  align-items: center;
-  //  flex-wrap: wrap;
-  //}
+  @include breakpoint_up(sm) {
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 
 }
 
@@ -101,18 +101,18 @@ const model = computed({
     opacity: .7;
   }
 
-  //@include breakpoint_up(md) {
-  //  align-self: center;
-  //}
+  @include breakpoint_up(sm) {
+    align-self: center;
+  }
 }
 
 .submit {
   height: 100%;
   margin-left: 1.3rem;
-  //@include breakpoint_up(md) {
-  //  margin-top: 1rem;
-  //  margin-left: 0;
-  //}
+  @include breakpoint_up(sm) {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
 
 }
 

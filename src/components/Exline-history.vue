@@ -55,6 +55,11 @@ import BaseTitle from "@/components/ui/BaseTitle.vue";
     'img-2 img-2 img-1 img-1'
     'img-2 img-2 card-2 card-2'
     'img-2 img-2 card-2 card-2';
+
+  @include breakpoint_up(sm) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .card {
@@ -100,6 +105,9 @@ import BaseTitle from "@/components/ui/BaseTitle.vue";
       width: 100%;
       max-width: 634px;
       object-fit: cover;
+      @include breakpoint_up(sm) {
+        display: none;
+      }
     }
   }
   &-2 {
@@ -108,6 +116,9 @@ import BaseTitle from "@/components/ui/BaseTitle.vue";
       width: 100%;
       max-width: 446px;
       object-fit: cover;
+      @include breakpoint_up(sm) {
+        display: none;
+      }
     }
   }
 }

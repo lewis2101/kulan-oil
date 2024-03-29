@@ -1,5 +1,5 @@
 <template>
-  <carousel :items-to-show="1" :class="$style.carousel">
+  <carousel :class="$style.carousel">
     <slot/>
     <template #addons>
       <navigation>
@@ -10,12 +10,13 @@
           <img src="@/assets/icons/chevron.svg" alt="" :class="$style.next">
         </template>
       </navigation>
+      <pagination :class="$style.pagination"/>
 
     </template>
   </carousel>
 </template>
 <script setup lang="ts">
-import {Carousel, Navigation} from "vue3-carousel";
+import {Carousel, Navigation, Pagination} from "vue3-carousel";
 </script>
 
 <style lang="scss" module>
@@ -32,6 +33,7 @@ import {Carousel, Navigation} from "vue3-carousel";
     margin-left: 50px;
   }
   @include breakpoint_up(md) {
+    display: none;
     margin-left: 10px;
   }
 }
@@ -43,7 +45,15 @@ import {Carousel, Navigation} from "vue3-carousel";
     margin-right: 50px;
   }
   @include breakpoint_up(md) {
+    display: none;
     margin-right: 10px;
+  }
+}
+
+.pagination {
+  display: none;
+  @include breakpoint_up(md) {
+    display: flex;
   }
 }
 

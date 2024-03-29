@@ -100,10 +100,16 @@ onMounted(async() => {
   padding: 0 10rem;
 
   position: relative;
-  bottom: 75px;
+  bottom: 40px;
+
+  z-index: 3;
 
   @include breakpoint_up(lg) {
     padding: 0 3rem;
+  }
+  @include breakpoint_up(md) {
+    position: static;
+    margin-bottom: 40px;
   }
 }
 

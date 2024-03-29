@@ -44,6 +44,11 @@
   @include breakpoint_up(lg) {
     padding: 0 3rem;
   }
+  @include breakpoint_up(sm) {
+    padding: 20px;
+    flex-direction: column;
+    align-items: start;
+  }
 }
 
 .social {
