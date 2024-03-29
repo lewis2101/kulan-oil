@@ -41,12 +41,12 @@ import BaseButton from "@/components/ui/BaseButton.vue";
 
 .img {
   width: 100%;
-  @include breakpoint_up(lg) {
-    width: 480px;
-  }
-  @include breakpoint_up(md) {
-    width: 430px;
-  }
+  //@include breakpoint_up(lg) {
+  //  width: 480px;
+  //}
+  //@include breakpoint_up(md) {
+  //  width: 430px;
+  //}
 }
 
 .content {
@@ -59,9 +59,9 @@ import BaseButton from "@/components/ui/BaseButton.vue";
     gap: 1rem;
     max-width: 415px;
 
-    @include breakpoint_up(lg) {
-      max-width: 350px;
-    }
+    //@include breakpoint_up(lg) {
+    //  max-width: 350px;
+    //}
 
     &-title {
       font-family: Mulish;

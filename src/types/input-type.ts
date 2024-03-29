@@ -10,3 +10,9 @@ export type TypeCities = {
     address: string,
     selected: false
 }
+
+export type FormMenu = {
+    active: boolean,
+    id: number,
+    label: string
+}
