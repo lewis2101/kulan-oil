@@ -14,7 +14,7 @@
         <span :class="$style['result-header']">Стоимость: <span>{{ formatSum(result.price.toString()) }} ₸</span></span>
       </div>
     </div>
-    <div v-if="hasResult">
+    <div v-if="hasResult" :class="$style.clear">
       <base-button variant="secondary" @click="$emit('clear')">Сбросить</base-button>
     </div>
   </div>
@@ -81,5 +81,13 @@ defineEmits(['update:modelValue', 'clear'])
       text-align: left;
     }
   }
+
+  @include breakpoint_up(sm) {
+    flex-wrap: wrap;
+  }
+}
+
+.clear {
+  align-self: end;
 }
 </style>
