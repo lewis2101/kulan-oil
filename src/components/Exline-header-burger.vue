@@ -3,7 +3,7 @@
     <img src="@/assets/icons/menu.svg" alt="">
   </div>
   <div :class="[$style.menu, { [$style.open]: open }]">
-    <a href="#main">Главная</a>
+    <a href="#">Главная</a>
     <a href="#advantage">Наши преимущества</a>
     <a href="#history">История Exline</a>
     <a href="#trusts">Нам доверяют</a>

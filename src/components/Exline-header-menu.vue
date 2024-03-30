@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.menu">
-    <a href="#main">Главная</a>
+    <a href="#">Главная</a>
     <a href="#advantage">Наши преимущества</a>
     <a href="#history">История Exline</a>
     <a href="#trusts">Нам доверяют</a>
