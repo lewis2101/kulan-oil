@@ -21,25 +21,27 @@ declare global {
     DG: any
   }
 }
-const DG = window.DG
-let map
-
 const renderMap = () => {
+  const DG = window.DG
+  let map
+
   DG.then(() => {
-    map = DG.map('map', {
-      center: [43.270070, 76.961387],
-      zoom: 16
-    })
-    DG.marker([43.270070, 76.961387])
-        .addTo(map)
-        .bindPopup('Exline Жетысуская, 43')
+   try {
+     map = DG.map('map', {
+       center: [43.270070, 76.961387],
+       zoom: 16
+     })
+     DG.marker([43.270070, 76.961387])
+         .addTo(map)
+         .bindPopup('Exline Жетысуская, 43')
+   } catch (e) {
+     renderMap()
+   }
   })
 }
 
 onMounted(() => {
-  setTimeout(() => {
-    renderMap()
-  }, 0)
+  renderMap()
 })
 
 </script>

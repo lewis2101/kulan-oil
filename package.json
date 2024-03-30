@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "2gis-maps": "^3.7.3",
     "axios": "^1.6.8",
     "vue": "^3.4.21",
     "vue3-carousel": "^0.3.1"
