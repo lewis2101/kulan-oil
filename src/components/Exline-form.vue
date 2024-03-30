@@ -4,6 +4,7 @@
     <exline-form-component
         v-model="inputs"
         :result="result"
+        :type="selectedMenuId"
         @calculate="calculate"
         @clear="clearData"
     />
@@ -11,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, reactive, ref} from "vue";
+import {computed, onMounted, reactive, ref} from "vue";
 import ExlineFormComponent from "@/components/Exline-form-component.vue";
 import {FormInput, FormMenu} from "@/types/input-type";
 import {getCities} from "@/api/getCities";
@@ -83,6 +84,8 @@ const fetchData = async () => {
   let data = await getCities()
   inputs.value = inputs.value.map(i => ({ ...i, cities: data }))
 }
+
+const selectedMenuId = computed(() => model.value.find(i => i.active).id)
 
 onMounted(async() => {
   await fetchData()

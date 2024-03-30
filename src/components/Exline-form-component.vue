@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.flex">
-    <div :class="$style.container">
+    <div v-if="isFind" :class="$style.container">
       <div :class="$style['container-input']">
         <exline-form-input v-model="model[0]"/>
       </div>
@@ -16,6 +16,10 @@
         <base-button variant="primary" max-width="275px" @click="$emit('calculate')">Рассчитать стоимость</base-button>
       </div>
     </div>
+    <div v-if="isDelivery" :class="$style.delivery">
+      <base-input v-model="codeDelivery" placeholder="Отследить посылку" max-width="100%"/>
+      <base-button max-width="350px">Отследить посылку</base-button>
+    </div>
     <exline-form-footer :result="result" @clear="$emit('clear')"/>
   </div>
 </template>
@@ -24,13 +28,17 @@
 import ExlineFormInput from "@/components/Exline-form-input.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
 import {FormInput} from "@/types/input-type";
-import {computed} from "vue";
+import {computed, ComputedRef, ref} from "vue";
 import ExlineFormFooter from "@/components/Exline-form-footer.vue";
+import BaseInput from "@/components/ui/BaseInput.vue";
 
 const props = defineProps<{
   modelValue: FormInput[],
-  result: Record<string, number | null>
+  result: Record<string, number | null>,
+  type: number
 }>()
+
+const codeDelivery = ref('')
 
 const emit = defineEmits(['update:modelValue', 'calculate', 'clear'])
 
@@ -45,6 +53,9 @@ const model = computed({
   get: () => props.modelValue,
   set: e => emit('update:modelValue', e)
 })
+
+const isDelivery: ComputedRef<boolean> = computed(() => props.type === 3)
+const isFind: ComputedRef<boolean> = computed(() => props.type < 3)
 
 </script>
 
@@ -91,6 +102,16 @@ const model = computed({
   &-input {
     width: 100%;
     max-width: 350px;
+  }
+}
+
+.delivery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  @include breakpoint_up(sm) {
+    flex-direction: column;
   }
 }
 

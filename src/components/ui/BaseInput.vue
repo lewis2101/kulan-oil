@@ -8,10 +8,13 @@
 <script setup lang="ts">
 import {computed} from "vue";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   placeholder: string,
-  modelValue: string
-}>()
+  modelValue: string,
+  maxWidth?: string
+}>(), {
+  maxWidth: '350px'
+})
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -28,7 +31,7 @@ const model = computed({
 
 .container {
   width: 100%;
-  max-width: 350px;
+  max-width: v-bind('props.maxWidth');
 
   height: 48px;
   border: 1px $color-gray-2 solid;

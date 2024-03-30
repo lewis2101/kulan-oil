@@ -29,7 +29,7 @@ const props = defineProps<{
   result: Record<string, number | null>,
 }>()
 
-const hasResult: ComputedRef<boolean> = computed(() => props.result.distance && props.result.time && props.result.price)
+const hasResult: ComputedRef<number> = computed(() => props.result.distance && props.result.time && props.result.price)
 
 defineEmits(['update:modelValue', 'clear'])
 
