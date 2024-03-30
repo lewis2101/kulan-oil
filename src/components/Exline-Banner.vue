@@ -14,7 +14,7 @@
         </div>
       </slide>
     </base-carousel>
-<!--    <div :class="$style.ellipse"></div>-->
+    <div :class="$style.background"></div>
   </div>
 </template>
 
@@ -34,6 +34,7 @@ import BaseButton from "@/components/ui/BaseButton.vue";
   background: $color-gray;
   height: 100%;
   width: 100%;
+  z-index: 2;
   position: relative;
   @include breakpoint_up(md) {
     padding-bottom: 20px;
@@ -42,12 +43,17 @@ import BaseButton from "@/components/ui/BaseButton.vue";
 
 .img {
   width: 100%;
-  //@include breakpoint_up(lg) {
-  //  width: 480px;
-  //}
-  //@include breakpoint_up(md) {
-  //  width: 430px;
-  //}
+}
+
+.background {
+  background-image: url("@/assets/icons/Ellipse.svg");
+  background-repeat: no-repeat;
+  object-fit: fill;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -50%;
 }
 
 .content {
@@ -101,8 +107,11 @@ import BaseButton from "@/components/ui/BaseButton.vue";
   border-radius: 50%;
   width: 733px;
   height: 733px;
-  right: -100px;
+  right: -300px;
   top: -127px;
   z-index: 1;
+  @include breakpoint_up(md) {
+    display: none;
+  }
 }
 </style>

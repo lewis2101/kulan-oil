@@ -24,9 +24,10 @@
 import BaseButton from "@/components/ui/BaseButton.vue";
 import {computed, ComputedRef} from "vue";
 import {formatSum, formatTime} from "@/helpers/format";
+import {ResultDistance} from "@/types/input-type";
 
 const props = defineProps<{
-  result: Record<string, number | null>,
+  result: ResultDistance,
 }>()
 
 const hasResult: ComputedRef<number> = computed(() => props.result.distance && props.result.time && props.result.price)

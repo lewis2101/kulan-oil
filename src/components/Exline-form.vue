@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import {computed, onMounted, reactive, ref} from "vue";
 import ExlineFormComponent from "@/components/Exline-form-component.vue";
-import {FormInput, FormMenu} from "@/types/input-type";
+import {FormInput, FormMenu, ResultDistance} from "@/types/input-type";
 import {getCities} from "@/api/getCities";
 import {calculateDistance} from "@/api/calculateDistance";
 import ExlineFormMenu from "@/components/Exline-form-menu.vue";
@@ -52,7 +52,7 @@ const inputs = ref<FormInput[]>([
   }
 ])
 
-const result = reactive<Record<string, number | null>>({
+const result = reactive<ResultDistance>({
   distance: null,
   time: null,
   price: null
@@ -64,7 +64,7 @@ const calculate = async () => {
   if(!from && !to) return
 
   if(from !== to) {
-    const data = await calculateDistance(from, to)
+    const { data } = await calculateDistance(from, to)
     return Object.keys(data).forEach(i => {
       result[i] = data[i]
     })
@@ -81,7 +81,7 @@ const clearData = async () => {
 }
 
 const fetchData = async () => {
-  let data = await getCities()
+  const { data } = await getCities()
   inputs.value = inputs.value.map(i => ({ ...i, cities: data }))
 }
 

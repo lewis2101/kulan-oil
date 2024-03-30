@@ -16,3 +16,9 @@ export type FormMenu = {
     id: number,
     label: string
 }
+
+export type ResultDistance = {
+    distance: number,
+    time: number,
+    price: number
+}

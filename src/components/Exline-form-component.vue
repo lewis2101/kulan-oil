@@ -27,14 +27,14 @@
 <script setup lang="ts">
 import ExlineFormInput from "@/components/Exline-form-input.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import {FormInput} from "@/types/input-type";
+import {FormInput, ResultDistance} from "@/types/input-type";
 import {computed, ComputedRef, ref} from "vue";
 import ExlineFormFooter from "@/components/Exline-form-footer.vue";
 import BaseInput from "@/components/ui/BaseInput.vue";
 
 const props = defineProps<{
   modelValue: FormInput[],
-  result: Record<string, number | null>,
+  result: ResultDistance,
   type: number
 }>()
 
