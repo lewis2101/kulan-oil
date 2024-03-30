@@ -39,6 +39,7 @@ import BaseButton from "@/components/ui/BaseButton.vue";
   @include breakpoint_up(md) {
     padding-bottom: 20px;
   }
+  overflow-x: hidden;
 }
 
 .img {
