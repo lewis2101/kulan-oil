@@ -14,7 +14,7 @@
         <span :class="$style['result-header']">Стоимость: <span>{{ formatSum(result.price.toString()) }} ₸</span></span>
       </div>
     </div>
-    <div>
+    <div v-if="hasResult">
       <base-button variant="secondary" @click="$emit('clear')">Сбросить</base-button>
     </div>
   </div>
@@ -22,21 +22,16 @@
 
 <script setup lang="ts">
 import BaseButton from "@/components/ui/BaseButton.vue";
-import {computed} from "vue";
-import {formatSum, formatTime} from "../helpers/format";
+import {computed, ComputedRef} from "vue";
+import {formatSum, formatTime} from "@/helpers/format";
 
 const props = defineProps<{
   result: Record<string, number | null>,
 }>()
 
-const hasResult = computed(() => props.result.distance && props.result.time && props.result.price)
+const hasResult: ComputedRef<boolean> = computed(() => props.result.distance && props.result.time && props.result.price)
 
-const emit = defineEmits(['update:modelValue', 'clear'])
-
-const model = computed({
-  get: () => props.modelValue,
-  set: e => emit('update:modelValue', e)
-})
+defineEmits(['update:modelValue', 'clear'])
 
 </script>
 

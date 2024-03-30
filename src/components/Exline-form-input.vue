@@ -3,10 +3,10 @@
   <div :class="$style.selects">
     <base-button
         variant="select"
-        v-for="(item, idx) in model.cities"
-        :key="item.id"
+        v-for="item in getSortedItems"
+        :key="item.id + model.id"
         :active="item.selected"
-        @click="selectCity(idx)"
+        @click="selectCity(item.id)"
     >
       {{ item.address }}
     </base-button>
@@ -16,8 +16,8 @@
 <script setup lang="ts">
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import {FormInput} from "@/types/input-type";
-import {computed, WritableComputedRef} from "vue";
+import {FormInput, TypeCities} from "@/types/input-type";
+import {computed, ComputedRef, WritableComputedRef} from "vue";
 
 const props = defineProps<{
   modelValue: FormInput
@@ -25,10 +25,13 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:modelValue'])
 
-const selectCity = (idx: number) => {
-  model.value.cities = model.value.cities.map(i => ({ ...i, selected: false }))
-  model.value.cities[idx].selected = true
+const selectCity = (id: number) => {
+  model.value.cities = model.value.cities.map(i => ({ ...i, selected: i.id === id }))
 }
+
+const getSortedItems: ComputedRef<TypeCities[]> = computed(() => model.value?.value ? model.value.cities.filter(i => isContains(i.address, model.value.value)) : [])
+
+const isContains = (text1: string, text2: string) => text1.toLowerCase().includes(text2.toLowerCase())
 
 const model: WritableComputedRef<FormInput> = computed({
   get: () => props.modelValue,

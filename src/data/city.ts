@@ -1,6 +1,6 @@
 export const city = [
     {"address": "Алматы", "id": 1},
-    {"address": "Нур-Султан", "id": 2},
+    {"address": "Астана", "id": 2},
     {"address": "Шымкент", "id": 3},
     {"address": "Караганда", "id": 4},
     {"address": "Актобе", "id": 5},

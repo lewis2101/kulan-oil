@@ -8,7 +8,7 @@ export type FormInput = {
 export type TypeCities = {
     id: number,
     address: string,
-    selected: false
+    selected: boolean
 }
 
 export type FormMenu = {

@@ -88,6 +88,10 @@ const model = computed({
     flex-wrap: wrap;
   }
 
+  &-input {
+    width: 100%;
+    max-width: 350px;
+  }
 }
 
 .arrow {
@@ -102,6 +106,7 @@ const model = computed({
   }
 
   @include breakpoint_up(sm) {
+    margin-top: 0;
     align-self: center;
   }
 }
