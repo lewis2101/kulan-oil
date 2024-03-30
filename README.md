@@ -1,9 +1,28 @@
-# Vue 3 + TypeScript + Vite
+# Тестовое задание для Kulan Oil
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## В приложение использовалось следующие библиотеки
 
-## Recommended Setup
+Vue 3 + Typescript + Vite
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+Vue-3-carousel (Для анимации карусели на главном экране)
 
-- Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+2GIS map (Подключен CND)
+
+Axios (http клиент)
+
+Scss (препроцессор)
+
+## Краткое описание
+
+В верстке не использовались сторонние библиотеки, посчитал удобным написать вручную (Только для анимации карусели была использована библиотека)
+
+По поводу иконок, решил не использовать спрайты, так как приложение довольно маленькое
+
+Создал переиспользуемые ui компоненты такие как кнопки, инпуты и т.д. 
+
+К адаптивной верстке был создан mixin - breakpoints и так же scss переменные для него в директории src/style/mixin. 
+
+Для запросов использовал готовый собственный апи куда были добавлены два ендпойнта (Логика вычисления суммы, и времени так же на бэке
+
+---
+В целом вроде получилось неплохо)
