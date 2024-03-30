@@ -30,12 +30,16 @@ const renderMap = () => {
       center: [43.270070, 76.961387],
       zoom: 16
     })
-    DG.marker([43.270070, 76.961387]).addTo(map).bindPopup('Exline Жетысуская, 43')
+    DG.marker([43.270070, 76.961387])
+        .addTo(map)
+        .bindPopup('Exline Жетысуская, 43')
   })
 }
 
 onMounted(() => {
-  renderMap()
+  setTimeout(() => {
+    renderMap()
+  }, 0)
 })
 
 </script>
