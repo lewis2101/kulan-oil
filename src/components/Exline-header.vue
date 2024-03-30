@@ -4,20 +4,15 @@
       <div :class="$style.logo">
         <img src="@/assets/icons/Logo.svg" alt="">
       </div>
-      <div :class="$style.menu">
-        <a href="#main">Главная</a>
-        <a href="#advantage">Наши преимущества</a>
-        <a href="#history">История Exline</a>
-        <a href="#trusts">Нам доверяют</a>
-        <a href="#contacts" :class="$style.line">Контакты</a>
-        <a href="#" :class="$style.link">info@exline.kz</a>
-        <a href="tel:77777078777" :class="$style.link">+7 (777) 707 87 77</a>
-      </div>
+      <exline-header-menu/>
+      <exline-header-burger/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import ExlineHeaderMenu from "@/components/Exline-header-menu.vue";
+import ExlineHeaderBurger from "@/components/Exline-header-burger.vue";
 
 </script>
 
@@ -47,40 +42,18 @@
   @include breakpoint_up(lg) {
     padding: 0 3rem;
   }
+  @include breakpoint_up(sm) {
+    height: 60px;
+  }
 }
 
 .logo {
   justify-self: start;
-}
-
-.menu {
-  font-family: Mulish;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-
-  display: flex;
-  align-items: center;
-  gap: 20px;
-
-  transition: .1s ease;
-
-  a:hover {
-    opacity: .7;
+  img {
+    @include breakpoint_up(sm) {
+      width: 56px;
+    }
   }
-
-  @include breakpoint_up(md) {
-    display: none;
-  }
-
 }
 
-.line {
-  padding-right: 20px;
-  border-right: 1px $color-gray solid;
-}
-
-.link {
-  color: $color-purple;
-}
 </style>

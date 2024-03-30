@@ -1,14 +1,12 @@
 <template>
-<!--  <div :class="$style.wrapper" id="main">-->
     <exline-header/>
     <exline-banner/>
     <exline-form/>
     <exline-advantages/>
     <exline-history/>
     <exline-trusts/>
-<!--    <exline-map/>-->
+    <exline-map/>
     <exline-footer/>
-<!--  </div>-->
 </template>
 
 <script setup lang="ts">
@@ -24,8 +22,4 @@ import ExlineFooter from "@/components/Exline-footer.vue";
 </script>
 
 <style lang="scss" module>
-.wrapper {
-  width: 1360px;
-  margin: 0 auto;
-}
 </style>

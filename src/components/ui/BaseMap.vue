@@ -2,10 +2,10 @@
     <div :class="$style.container">
       <div :class="$style['popup']">
           <div :class="$style['popup-title']">г. Алматы, ​улица Жетысуская, 43</div>
-        <div :class="$style['popup-desc']">+7 (727) 390‒03‒00</div>
-        <div :class="$style['popup-desc']">+7 (727) 390‒03‒01</div>
-        <div :class="$style['popup-desc']">+7 (727) 390‒03‒02</div>
-        <div :class="$style['popup-desc']">+7‒777‒755‒50‒57</div>
+        <div :class="$style['popup-desc']"><a href="tel:77273900300">+7 (727) 390‒03‒00</a></div>
+        <div :class="$style['popup-desc']"><a href="tel:77273900301">+7 (727) 390‒03‒01</a></div>
+        <div :class="$style['popup-desc']"><a href="tel:77273900302">+7 (727) 390‒03‒02</a></div>
+        <div :class="$style['popup-desc']"><a href="tel:77777555057">+7‒777‒755‒50‒57</a></div>
         <div :class="$style['popup-desc']">info@exline.kz</div>
       </div>
       <div id="map" :class="$style.map"></div>
@@ -72,18 +72,35 @@ DG.then(function () {
       margin-top: 10px;
     }
   }
+
+  @include breakpoint_up(md) {
+    position: static;
+    margin-bottom: 20px;
+  }
+
+  @include breakpoint_up(sm) {
+    //display: none;
+  }
 }
 
 .container {
   position: relative;
-  width: fit-content;
+  width: 100%;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 .map {
-  //width: 70vw;
-  width: 1100px;
+  width: 100%;
+  //width: 1100px;
   height: 640px;
   margin: 0 auto;
+  @include breakpoint_up(md) {
+    height: 440px;
+  }
+  @include breakpoint_up(sm) {
+    height: 340px;
+  }
 }
 </style>
